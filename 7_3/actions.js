@@ -8,8 +8,8 @@ const THUMB_UP_COMMENT = 'THUMB_UP_COMMENT';
 const THUMB_DOWN_COMMENT = 'THUMB_DOWN_COMMENT';
 
 const initialState = {
-    comments: [],
-}
+    comments: []
+};
 
 function comments(state = initialState, action) {
     switch (action.type) {
@@ -28,32 +28,37 @@ function comments(state = initialState, action) {
             return Object.assign({}, state, {
                 comments: state.comments.filter(comment => comment.id !== action.id)
             });
+            break;
         case EDIT_COMMENT:
             return Object.assign({}, state, {
-                comments: state.comments.forEach(item => {
+                comments: state.comments.map(item => {
                     if (item.id === action.id) {
                         item.text = action.text;
                     }
+                    return item;
                 })
             });
+            break;
         case THUMB_UP_COMMENT:
             return Object.assign({}, state, {
-                comments: state.comments.forEach(item => {
+                comments: state.comments.map(item => {
                     if (item.id === action.id) {
                         item.votes--;
                     }
+                    return item;
                 })
             });
-
+            break;
         case THUMB_DOWN_COMMENT:
             return Object.assign({}, state, {
-                comments: state.comments.forEach(item => {
+                comments: state.comments.map(item => {
                     if (item.id === action.id) {
                         item.votes++;
                     }
+                    return item;
                 })
             });
-
+            break;
         default:
             return state;
     }
@@ -66,7 +71,6 @@ function addComment(text) {
         id: uuid.v4(),
     }
 }
-
 function editComment(id, text) {
     return {
         type: EDIT_COMMENT,
@@ -74,21 +78,18 @@ function editComment(id, text) {
         text,
     }
 }
-
 function removeComment(id) {
     return {
         type: REMOVE_COMMENT,
         id,
     }
 }
-
 function thumbUpComment(id) {
     return {
         type: THUMB_UP_COMMENT,
         id,
     }
 }
-
 function thumbDownComment(id) {
     return {
         type: THUMB_DOWN_COMMENT,
