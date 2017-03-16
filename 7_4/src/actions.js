@@ -1,6 +1,4 @@
 import uuid from 'uuid';
-import { createStore } from 'redux';
-import reducer from './reducer';
 
 export const ADD_COMMENT = 'ADD_COMMENT';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
@@ -40,11 +38,3 @@ function thumbDownComment(id) {
         id,
     }
 }
-
-const store = createStore(reducer);
-
-const boundAddComment = text => store.dispatch(addComment(text));
-const boundRemoveComment = id => store.dispatch(removeComment(id));
-const boundEditComment = (id, text) => store.dispatch(editComment(id, text));
-const boundThumbUpComment = id => store.dispatch(thumbUpComment(id));
-const boundThumbDownComment = id => store.dispatch(thumbDownComment(id));
