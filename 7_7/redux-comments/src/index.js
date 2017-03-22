@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './Containers/App';
-import './index.css';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducer from './Redux/reducer';
@@ -16,5 +15,5 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-store.dispatch(addComment('pierwszy komentarz'));
-store.dispatch(addComment('drugi komentarz'));
+store.dispatch(addComment('pierwszy'));
+store.dispatch(addComment('drugi'));
