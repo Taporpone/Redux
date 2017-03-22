@@ -3,7 +3,7 @@ import './App.css';
 import CommentsListContainer from './CommentsListContainer';
 
 const App = () => {
-  return(
+  return (
     <div className='App'>
       <CommentsListContainer />
     </div>
