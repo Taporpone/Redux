@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
 import reducer from './reducer';
-
+import { addComment, removeComment, editComment, thumbDownComment,thumbUpComment} from './actions.js';
 
 const store = createStore(reducer);
 
